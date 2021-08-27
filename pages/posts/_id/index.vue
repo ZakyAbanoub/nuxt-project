@@ -1,18 +1,46 @@
 <template>
     <div class="single-post-page">
         <section class="post">
-            <h1 class="post-title">Title of the post</h1>
+            <h1 class="post-title"> {{ loadedPost.title }} </h1>
             <div class="post-details">
-                <div class="post-detail"> Last Updated on XXX </div>
-                <div class="post-detail"> Written By Name </div>
+                <div class="post-detail"> Last Updated on {{ loadedPost.updatedDate }} </div>
+                <div class="post-detail"> Written By {{ loadedPost.author }} </div>
             </div>
-            <p class="post-content"> Content Of The Post </p>
+            <p class="post-content"> {{ loadedPost.content }} </p>
         </section>
         <section class="post-feedback">
             <p>Let me think about the post, send mail to <a href="mailto:zaky.abanoub@gmail.com"> mailto:zaky.abanoub@gmail.com </a></p>
         </section>
     </div>
 </template>
+
+<script>
+export default {
+  asyncData(context) {
+    return new Promise(function(resolve, reject){
+      setTimeout(() =>
+      resolve({
+        loadedPost:{
+          id: 1,
+          title: "First Post " + context.params.id + "",
+          previewText: 'This is our first post!',
+          author: 'Abanoub',
+          updatedDate: new Date(),
+          content: 'Some dummy text which is definitely not the real',
+          thumbnail: 'https://res-3.cloudinary.com/fieldfisher/image/upload/c_lfill,g_auto/f_auto,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05'
+        },
+      }), 500);
+      
+    })
+    .then(data => {
+      return data
+    })
+    .catch( () => {
+      context.error(new Error() )
+    })
+  },
+}
+</script>
 
 <style scoped>
 .single-post-page {

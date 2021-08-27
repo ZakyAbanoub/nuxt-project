@@ -3,16 +3,70 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <PostsList />
+    <PostsList :posts="loadedPosts" />
   </div>
 </template>
 
 <script>
-import PostsList from '@/components/Posts/PostsList.vue'
 
 export default {
-  components:{
-    PostsList
+  // asyncData(){
+  //   return new Promise(function(resolve, reject){
+  //     setTimeout(() => resolve({
+  //       loadedPosts: [
+  //       {
+  //         id: 1,
+  //         title: 'First Post',
+  //         previewText: 'This is our first post!',
+  //         thumbnail: 'https://res-3.cloudinary.com/fieldfisher/image/upload/c_lfill,g_auto/f_auto,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05'
+  //       },
+  //       {
+  //         id: 2,
+  //         title: 'Second Post',
+  //         previewText: 'This is our second post!',
+  //         thumbnail: 'https://res-3.cloudinary.com/fieldfisher/image/upload/c_lfill,g_auto/f_auto,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05'
+  //       },
+  //       {
+  //         id: 3,
+  //         title: 'First Post',
+  //         previewText: 'This is our third post!',
+  //         thumbnail: 'https://res-3.cloudinary.com/fieldfisher/image/upload/c_lfill,g_auto/f_auto,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05'
+  //       },
+  //     ]
+  //     }), 1000);
+  //   })
+  // },
+  // data() {
+  //   return {
+  //     loadedPosts: [
+  //       {
+  //         isAdmin: false,
+  //         id: 1,
+  //         title: 'First Post',
+  //         previewText: 'This is our first post!',
+  //         thumbnail: 'https://res-3.cloudinary.com/fieldfisher/image/upload/c_lfill,g_auto/f_auto,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05'
+  //       },
+  //       {
+  //         isAdmin: false,
+  //         id: 2,
+  //         title: 'Second Post',
+  //         previewText: 'This is our second post!',
+  //         thumbnail: 'https://res-3.cloudinary.com/fieldfisher/image/upload/c_lfill,g_auto/f_auto,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05'
+  //       },
+  //       {
+  //         isAdmin: false,
+  //         id: 3,
+  //         title: 'First Post',
+  //         previewText: 'This is our third post!',
+  //         thumbnail: 'https://res-3.cloudinary.com/fieldfisher/image/upload/c_lfill,g_auto/f_auto,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05'
+  //       },
+  //     ]
+  //   }
+  // },
+  computed:{
+    loadedPosts(){
+      return this.$store.getters.loadedPosts
+    }
   }
 }
 </script>

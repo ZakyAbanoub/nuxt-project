@@ -12,7 +12,7 @@ export default {
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
             { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
             { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Ubuntu:wght@500&display=swap' },
+            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Titillium+Web:wght@300&family=Ubuntu&display=swap' },
 
 
         ]
@@ -25,7 +25,10 @@ export default {
     plugins: [],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
-    components: true,
+    components: [{
+        path: '~/components', // will get any components nested in let's say /components/test too
+        pathPrefix: false,
+    }, ],
 
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [],
@@ -54,5 +57,5 @@ export default {
     content: {},
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {}
+    build: {},
 }
