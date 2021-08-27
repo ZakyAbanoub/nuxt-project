@@ -3,44 +3,18 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <section class="featured-posts">
-
-      <nuxt-link :to="`/posts/1`" class="post-preview">
-        <article>
-          <div class="post-thumbnail" style="background-image: url('https://media-exp1.licdn.com/dms/image/C4E1BAQEKkvWfkxxxww/company-background_10000/0/1597164510249?e=2159024400&v=beta&t=lMTf9_xn7UxGrawWjgOzfXc9-XhWkxqWD4at9c-tuFc')"></div>
-          <div class="post-content">
-            <h1>Post Title</h1>
-            <p>Preview Text</p>
-          </div>
-        </article>
-      </nuxt-link>
-      
-      <nuxt-link :to="`/posts/1`" class="post-preview">
-        <article>
-          <div class="post-thumbnail" style="background-image: url('https://www.focusecommerce.it/wp-content/uploads/2021/03/human-tech-hybrid.jpeg')"></div>
-          <div class="post-content">
-            <h1>Post Title</h1>
-            <p>Preview Text</p>
-          </div>
-        </article>
-      </nuxt-link>
-
-      <nuxt-link :to="`/posts/1`" class="post-preview">
-        <article>
-          <div class="post-thumbnail" style="background-image: url('https://www.hydrocarbons-technology.com/wp-content/uploads/sites/9/2020/09/shutterstock_1152185600-1440x1008-1-857x600.jpg')"></div>
-          <div class="post-content">
-            <h1>Post Title</h1>
-            <p>Preview Text</p>
-          </div>
-        </article>
-      </nuxt-link>
-
-    </section>
+    <PostsList />
   </div>
 </template>
 
 <script>
-export default {}
+import PostsList from '@/components/Posts/PostsList.vue'
+
+export default {
+  components:{
+    PostsList
+  }
+}
 </script>
 
 <style scoped>
@@ -49,6 +23,7 @@ export default {}
   position: relative;
   padding: 30px;
   box-sizing: border-box;
+  background-image: url('~static/background.jpg');
   background-position: center;
   background-size: cover;
 }
@@ -72,50 +47,5 @@ export default {}
   .intro h1 {
     font-size: 2rem;
   }
-}
-
-.featured-posts {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.post-preview {
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 2px #ccc;
-  background-color: white;
-  width: 90%;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-@media (min-width: 850px) {
-  .post-preview {
-    width: 400px;
-    margin: 10px;
-  }
-}
-
-.post-thumbnail {
-  width: 100%;
-  height: 200px;
-  background-position: center;
-  background-size: cover;
-}
-
-.post-content {
-  padding: 10px;
-  text-align: center;
-}
-
-a:hover .post-content,
-a:active .post-content {
-  background-color: #ccc;
 }
 </style>
