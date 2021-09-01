@@ -3,7 +3,7 @@
         <section class="post">
             <h1 class="post-title"> {{ loadedPost.title }} </h1>
             <div class="post-details">
-                <div class="post-detail"> Last Updated on {{ loadedPost.updatedDate }} </div>
+                <div class="post-detail"> Last Updated on {{ loadedPost.updatedDate | date }} </div>
                 <div class="post-detail"> Written By {{ loadedPost.author }} </div>
             </div>
             <p class="post-content"> {{ loadedPost.content }} </p>
@@ -15,29 +15,16 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   asyncData(context) {
-    return new Promise(function(resolve, reject){
-      setTimeout(() =>
-      resolve({
-        loadedPost:{
-          id: 1,
-          title: "First Post " + context.params.id + "",
-          previewText: 'This is our first post!',
-          author: 'Abanoub',
-          updatedDate: new Date(),
-          content: 'Some dummy text which is definitely not the real',
-          thumbnail: 'https://res-3.cloudinary.com/fieldfisher/image/upload/c_lfill,g_auto/f_auto,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05'
-        },
-      }), 500);
-      
+    return axios.get(`${process.env.baseUrl}/posts/${context.params.id}.json`)
+    .then( res => {
+      return {
+        loadedPost: res.data
+      }
     })
-    .then(data => {
-      return data
-    })
-    .catch( () => {
-      context.error(new Error() )
-    })
+    .catch(e => context.error(e))
   },
 }
 </script>

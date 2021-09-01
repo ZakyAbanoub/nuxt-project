@@ -14,6 +14,7 @@ export default {
     TheHeader,
     TheSide
   },
+  middleware: 'log',
   data() {
     return {
       displaySidenav: false

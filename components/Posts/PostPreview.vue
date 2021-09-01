@@ -18,7 +18,6 @@ export default {
           required: true
         },
         id: {
-            type: Number,
             required: true
         },
         title: {
@@ -53,6 +52,11 @@ export default {
 a {
   text-decoration: none;
   color: black;
+  transition: 0.3s all ease-in-out;
+}
+
+a:hover{
+  transform: translateY(-20px);
 }
 
 @media (min-width: 850px) {
