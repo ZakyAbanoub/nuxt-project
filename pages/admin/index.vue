@@ -1,7 +1,9 @@
 <template>
     <div class="admin-page">
         <section class="new-post">
-            <AppButton @click="$router.push('/admin/new-post')"> Create Post</AppButton>
+            <AppButton v-if="$store.getters.isAuthenticated" @click="$router.push('/admin/new-post')"> Create Post</AppButton>
+            <AppButton v-if="$store.getters.isAuthenticated" style="margin-left: 0.5rem" @click="onLogout"> Logout </AppButton>
+
         </section>
         <section class="existing-posts">
             <h1>Existing Posts</h1>
@@ -13,7 +15,13 @@
 <script>
 export default {
     layout: 'admin',
-    middleware: ['check-auth', 'auth']
+    middleware: ['check-auth', 'auth'],
+    methods:{
+      onLogout(){
+        this.$store.dispatch('logout')
+        this.$router.push('/admin/auth')
+      }
+    }
 }
 </script>
 
